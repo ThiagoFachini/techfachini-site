@@ -1,257 +1,672 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TechFachini — Soluções Digitais</title>
-  <meta name="description" content="Sites, sistemas, apresentações e soluções digitais para pequenos negócios.">
+  <meta name="description" content="Portfólio de Thiago Fachini. Desenvolvimento de sites, sistemas Java e soluções digitais.">
+  <title>Thiago Fachini | Desenvolvedor</title>
+
   <style>
-    :root{
-      --bg:#070b14;
-      --card:#101827;
-      --card2:#0d1421;
-      --text:#f4f7fb;
-      --muted:#9ca9bd;
-      --primary:#6c63ff;
-      --secondary:#20d4ff;
-      --line:rgba(255,255,255,.09);
-      --max:1100px;
+    :root {
+      --bg: #070b14;
+      --card: #101827;
+      --card2: #0d1421;
+      --text: #f4f7fb;
+      --muted: #9ca9bd;
+      --primary: #6c63ff;
+      --secondary: #20d4ff;
+      --line: rgba(255,255,255,.09);
+      --max: 1100px;
     }
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{
-      font-family:Inter,Segoe UI,Arial,sans-serif;
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
       background:
-        radial-gradient(circle at 80% 0%,rgba(32,212,255,.12),transparent 28%),
-        radial-gradient(circle at 10% 20%,rgba(108,99,255,.14),transparent 30%),
+        radial-gradient(circle at 80% 0%, rgba(32,212,255,.12), transparent 28%),
+        radial-gradient(circle at 10% 20%, rgba(108,99,255,.14), transparent 30%),
         var(--bg);
-      color:var(--text);
-      line-height:1.6;
+      color: var(--text);
+      line-height: 1.6;
     }
-    a{text-decoration:none;color:inherit}
-    .container{width:min(var(--max),92%);margin:auto}
-    header{
-      position:sticky;top:0;z-index:10;
-      backdrop-filter:blur(15px);
-      background:rgba(7,11,20,.78);
-      border-bottom:1px solid var(--line);
+
+    a {
+      text-decoration: none;
+      color: inherit;
     }
-    nav{height:72px;display:flex;align-items:center;justify-content:space-between}
-    .logo{font-weight:800;font-size:21px;letter-spacing:-.5px}
-    .logo span{color:var(--secondary)}
-    nav ul{display:flex;gap:26px;list-style:none;color:var(--muted);font-size:14px}
-    nav a:hover{color:#fff}
-    .btn{
-      display:inline-flex;align-items:center;justify-content:center;
-      padding:12px 18px;border-radius:10px;font-weight:700;font-size:14px;
-      background:linear-gradient(135deg,var(--primary),var(--secondary));
-      color:white;box-shadow:0 8px 30px rgba(32,212,255,.14);
-      transition:.2s;
+
+    .container {
+      width: min(var(--max), 92%);
+      margin: auto;
     }
-    .btn:hover{transform:translateY(-2px)}
-    .btn.secondary{background:transparent;border:1px solid var(--line);box-shadow:none}
-    section{padding:82px 0}
-    .hero{min-height:calc(100vh - 72px);display:flex;align-items:center}
-    .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:55px;align-items:center}
-    .tag{
-      display:inline-block;padding:7px 11px;border:1px solid rgba(32,212,255,.22);
-      background:rgba(32,212,255,.06);border-radius:999px;color:#8deaff;font-size:12px;
-      margin-bottom:18px;
+
+    /* MENU */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(15px);
+      background: rgba(7,11,20,.85);
+      border-bottom: 1px solid var(--line);
     }
-    h1{font-size:clamp(42px,6vw,72px);line-height:1.02;letter-spacing:-3px;max-width:720px}
-    h1 span{background:linear-gradient(90deg,#fff,var(--secondary));-webkit-background-clip:text;color:transparent}
-    .hero p{color:var(--muted);font-size:18px;max-width:650px;margin:22px 0 30px}
-    .actions{display:flex;gap:12px;flex-wrap:wrap}
-    .mockup{
-      border:1px solid var(--line);border-radius:20px;background:linear-gradient(145deg,#121d2f,#0a101b);
-      padding:15px;box-shadow:0 25px 80px rgba(0,0,0,.4);
+
+    nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
     }
-    .browser{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#09101b}
-    .bar{padding:12px 15px;border-bottom:1px solid var(--line);display:flex;gap:7px}
-    .dot{width:8px;height:8px;border-radius:50%;background:#667085}
-    .screen{padding:28px}
-    .screen .mini-title{font-size:27px;font-weight:800;margin-bottom:9px}
-    .mini-line{height:9px;width:70%;background:#25334a;border-radius:5px;margin:8px 0}
-    .mini-card{margin-top:24px;padding:20px;border:1px solid var(--line);border-radius:12px}
-    .section-head{text-align:center;margin-bottom:42px}
-    .section-head h2{font-size:38px;letter-spacing:-1px}
-    .section-head p{color:var(--muted);margin-top:8px}
-    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .card{
-      background:linear-gradient(160deg,var(--card),var(--card2));
-      border:1px solid var(--line);border-radius:16px;padding:27px;
-      transition:.2s;
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
     }
-    .card:hover{transform:translateY(-4px);border-color:rgba(32,212,255,.3)}
-    .icon{font-size:28px;margin-bottom:15px}
-    .card h3{margin-bottom:8px}
-    .card p{color:var(--muted);font-size:14px}
-    .price{font-size:30px;font-weight:800;margin:18px 0 4px}
-    .small{font-size:12px;color:var(--muted)}
-    .portfolio{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
-    .project{
-      min-height:220px;padding:26px;border-radius:17px;border:1px solid var(--line);
-      background:linear-gradient(135deg,#121d2e,#0b111c);display:flex;flex-direction:column;justify-content:flex-end;
+
+    .logo span {
+      color: var(--secondary);
     }
-    .project span{color:#7feaff;font-size:12px;text-transform:uppercase;letter-spacing:1px}
-    .project h3{font-size:25px;margin:5px 0}
-    .project p{color:var(--muted);font-size:14px}
-    .cta{
-      text-align:center;padding:60px 25px;border:1px solid var(--line);border-radius:22px;
-      background:radial-gradient(circle at 50% 0%,rgba(108,99,255,.18),transparent 55%),#0c1422;
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+      font-size: 14px;
+      color: var(--muted);
     }
-    .cta h2{font-size:38px;margin-bottom:10px}
-    .cta p{color:var(--muted);margin-bottom:24px}
-    footer{padding:30px 0;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
-    footer .container{display:flex;justify-content:space-between;gap:20px}
-    @media(max-width:800px){
-      nav ul{display:none}
-      .hero-grid,.cards,.portfolio{grid-template-columns:1fr}
-      .hero{padding-top:45px}
-      section{padding:65px 0}
-      h1{letter-spacing:-2px}
-      footer .container{flex-direction:column}
+
+    nav a:hover {
+      color: var(--secondary);
+    }
+
+    /* BOTOES */
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 14px;
+      color: white;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      transition: .2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(32,212,255,.2);
+    }
+
+    .btn.secondary {
+      background: transparent;
+      border: 1px solid var(--line);
+    }
+
+    section {
+      padding: 85px 0;
+    }
+
+    /* APRESENTACAO */
+    .hero {
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      align-items: center;
+      gap: 55px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 7px 12px;
+      border: 1px solid rgba(32,212,255,.22);
+      background: rgba(32,212,255,.06);
+      border-radius: 30px;
+      color: #8deaff;
+      font-size: 12px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: clamp(40px, 6vw, 70px);
+      line-height: 1.08;
+      letter-spacing: -2px;
+    }
+
+    h1 span {
+      background: linear-gradient(90deg, #fff, var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 18px;
+      margin: 25px 0 30px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* JANELA DECORATIVA */
+    .mockup {
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 15px;
+      background: linear-gradient(145deg, #121d2f, #0a101b);
+      box-shadow: 0 25px 80px rgba(0,0,0,.4);
+    }
+
+    .browser {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      background: #09101b;
+    }
+
+    .bar {
+      padding: 12px;
+      display: flex;
+      gap: 7px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #667085;
+    }
+
+    .screen {
+      padding: 30px;
+    }
+
+    .screen h2 {
+      font-size: 28px;
+      line-height: 1.2;
+    }
+
+    .mini-line {
+      height: 9px;
+      width: 70%;
+      background: #25334a;
+      border-radius: 5px;
+      margin-top: 12px;
+    }
+
+    .mini-card {
+      margin-top: 25px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }
+
+    .mini-card p {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 5px;
+    }
+
+    /* TITULOS */
+    .section-head {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .section-head h2 {
+      font-size: 38px;
+      letter-spacing: -1px;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      margin-top: 10px;
+    }
+
+    /* SERVICOS */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: linear-gradient(160deg, var(--card), var(--card2));
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 28px;
+      transition: .2s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(32,212,255,.35);
+    }
+
+    .icon {
+      font-size: 30px;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .price {
+      font-size: 28px;
+      font-weight: 800;
+      margin-top: 20px;
+    }
+
+    .small {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    /* PROJETOS */
+    .portfolio {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .project {
+      min-height: 270px;
+      padding: 28px;
+      border-radius: 17px;
+      border: 1px solid var(--line);
+      background: linear-gradient(135deg, #121d2e, #0b111c);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      transition: .2s;
+    }
+
+    .project:hover {
+      transform: translateY(-5px);
+      border-color: rgba(32,212,255,.3);
+    }
+
+    .project span {
+      color: #7feaff;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .project h3 {
+      font-size: 26px;
+      margin: 8px 0;
+    }
+
+    .project p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .project a {
+      color: #7feaff;
+      font-weight: 700;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .project a:hover {
+      text-decoration: underline;
+    }
+
+    /* CONTATO */
+    .cta {
+      text-align: center;
+      padding: 65px 25px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(108,99,255,.18), transparent 55%),
+        #0c1422;
+    }
+
+    .cta h2 {
+      font-size: 38px;
+      margin-bottom: 12px;
+    }
+
+    .cta p {
+      color: var(--muted);
+      margin-bottom: 25px;
+    }
+
+    /* RODAPE */
+    footer {
+      padding: 30px 0;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    footer .container {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    /* CELULAR */
+    @media(max-width: 800px) {
+      nav ul {
+        display: none;
+      }
+
+      .hero-grid,
+      .cards,
+      .portfolio {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 45px;
+      }
+
+      section {
+        padding: 65px 0;
+      }
+
+      h1 {
+        font-size: 42px;
+      }
+
+      footer .container {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
+
 <body>
 
-<header>
-  <div class="container">
-    <nav>
-      <a class="logo" href="#">Tech<span>Fachini</span></a>
-      <ul>
-        <li><a href="#servicos">Serviços</a></li>
-        <li><a href="#portfolio">Portfólio</a></li>
-        <li><a href="#contato">Contato</a></li>
-      </ul>
-      <a class="btn" href="#contato">Orçamento</a>
-    </nav>
-  </div>
-</header>
+  <!-- MENU -->
+  <header>
+    <div class="container">
+      <nav>
+        <a href="#" class="logo">Tech<span>Fachini</span></a>
 
-<main>
-  <section class="hero">
-    <div class="container hero-grid">
-      <div>
-        <span class="tag">SOLUÇÕES DIGITAIS • ATENDIMENTO ONLINE</span>
-        <h1>Seu negócio merece uma presença <span>digital de verdade.</span></h1>
-        <p>
-          Criação de sites, sistemas simples, apresentações e soluções digitais
-          com visual profissional e preço acessível.
-        </p>
-        <div class="actions">
-          <!-- TROQUE O NÚMERO ABAIXO PELO SEU WHATSAPP -->
-          <a class="btn" href="https://wa.me/5511999999999" target="_blank">Falar no WhatsApp</a>
-          <a class="btn secondary" href="#portfolio">Ver projetos</a>
+        <ul>
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#portfolio">Projetos</a></li>
+          <li><a href="#contato">Contato</a></li>
+          <li>
+            <a href="https://github.com/ThiagoFachini"
+               target="_blank" rel="noopener noreferrer">
+              GitHub
+            </a>
+          </li>
+        </ul>
+
+        <a href="#contato" class="btn">Orçamento</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- INICIO -->
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+
+        <div>
+          <span class="tag">
+            DESENVOLVIMENTO WEB • JAVA • SOLUÇÕES DIGITAIS
+          </span>
+
+          <h1>
+            Olá, sou Thiago Fachini.
+            <span>Transformo ideias em soluções digitais.</span>
+          </h1>
+
+          <p>
+            Desenvolvedor com experiência em projetos Java,
+            banco de dados e desenvolvimento web.
+            Crio sites, sistemas e soluções digitais para
+            pessoas e pequenos negócios.
+          </p>
+
+          <div class="actions">
+            <a href="#portfolio" class="btn">
+              Conhecer meus projetos
+            </a>
+
+            <a href="https://github.com/ThiagoFachini"
+               target="_blank" rel="noopener noreferrer"
+               class="btn secondary">
+              Meu GitHub
+            </a>
+          </div>
         </div>
-      </div>
 
-      <div class="mockup">
-        <div class="browser">
-          <div class="bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i></div>
-          <div class="screen">
-            <div class="tag">SITE PROFISSIONAL</div>
-            <div class="mini-title">Mais presença.<br>Mais clientes.</div>
-            <div class="mini-line"></div>
-            <div class="mini-line" style="width:52%"></div>
-            <div class="mini-card">
-              <strong>Atendimento rápido</strong>
-              <p style="color:#9ca9bd;font-size:13px;margin-top:5px">
-                WhatsApp, localização, serviços e informações em um só lugar.
-              </p>
+        <div class="mockup">
+          <div class="browser">
+            <div class="bar">
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+
+            <div class="screen">
+              <span class="tag">DESENVOLVEDOR</span>
+
+              <h2>
+                Código, criatividade<br>
+                e tecnologia.
+              </h2>
+
+              <div class="mini-line"></div>
+              <div class="mini-line" style="width:50%"></div>
+
+              <div class="mini-card">
+                <strong>Minhas tecnologias</strong>
+                <p>
+                  Java • MySQL • HTML • CSS • JavaScript
+                </p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <section id="servicos">
+      </div>
+    </section>
+
+    <!-- SERVICOS -->
+    <section id="servicos">
+      <div class="container">
+
+        <div class="section-head">
+          <h2>Meus serviços</h2>
+          <p>
+            Soluções digitais para pessoas e pequenos negócios.
+          </p>
+        </div>
+
+        <div class="cards">
+
+          <article class="card">
+            <div class="icon">🌐</div>
+            <h3>Criação de Sites</h3>
+
+            <p>
+              Desenvolvimento de sites modernos,
+              responsivos e personalizados, com
+              informações, serviços e contato.
+            </p>
+
+            <div class="price">A partir de R$250</div>
+            <span class="small">
+              Orçamento conforme o projeto.
+            </span>
+          </article>
+
+          <article class="card">
+            <div class="icon">💻</div>
+            <h3>Desenvolvimento de Sistemas</h3>
+
+            <p>
+              Sistemas em Java para cadastro de clientes,
+              produtos, estoque e gerenciamento
+              de informações.
+            </p>
+
+            <div class="price">A partir de R$300</div>
+            <span class="small">
+              Soluções personalizadas.
+            </span>
+          </article>
+
+          <article class="card">
+            <div class="icon">📊</div>
+            <h3>Documentos e Apresentações</h3>
+
+            <p>
+              Criação de apresentações, currículos,
+              planilhas, formatação de documentos
+              e organização visual de materiais.
+            </p>
+
+            <div class="price">A partir de R$30</div>
+            <span class="small">
+              Valor conforme a complexidade.
+            </span>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section id="portfolio">
+      <div class="container">
+
+        <div class="section-head">
+          <h2>Meus projetos</h2>
+          <p>
+            Alguns projetos desenvolvidos e publicados no GitHub.
+          </p>
+        </div>
+
+        <div class="portfolio">
+
+          <!-- PROJETO 1 -->
+          <article class="project">
+            <span>Java • Swing • MySQL</span>
+
+            <h3>Valorant Pro Registry (VPR)</h3>
+
+            <p>
+              Sistema desktop desenvolvido em Java
+              para cadastro e gerenciamento de jogadores
+              de Valorant, suas funções e equipes.
+              Utiliza banco de dados MySQL e
+              operações CRUD.
+            </p>
+
+            <a href="https://github.com/ThiagoFachini/VPR"
+               target="_blank" rel="noopener noreferrer">
+              Ver projeto no GitHub →
+            </a>
+          </article>
+
+          <!-- PROJETO 2 -->
+          <article class="project">
+            <span>HTML • CSS • JavaScript</span>
+
+            <h3>Colab4</h3>
+
+            <p>
+              Projeto colaborativo de desenvolvimento web
+              com criação de portfólio responsivo,
+              apresentando projetos e habilidades.
+            </p>
+
+            <a href="https://github.com/CodingWithSamuel/Colab4"
+               target="_blank" rel="noopener noreferrer">
+              Ver código no GitHub →
+            </a>
+
+            <a href="https://colab4.netlify.app/thiago/indexthiago"
+               target="_blank" rel="noopener noreferrer">
+              Visualizar minha página →
+            </a>
+          </article>
+
+        </div>
+
+        <div style="text-align:center;margin-top:35px">
+          <a href="https://github.com/ThiagoFachini"
+             target="_blank" rel="noopener noreferrer"
+             class="btn secondary">
+            Ver todos os repositórios
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section id="contato">
+      <div class="container">
+
+        <div class="cta">
+          <h2>Vamos trabalhar juntos?</h2>
+
+          <p>
+            Precisa de um site, sistema ou serviço digital?
+            Entre em contato para solicitar um orçamento.
+          </p>
+
+          <!-- SUBSTITUA PELO SEU WHATSAPP -->
+          <a href="https://wa.me/5535984012997"
+             target="_blank" rel="noopener noreferrer"
+             class="btn">
+            Solicitar orçamento pelo WhatsApp
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- RODAPE -->
+  <footer>
     <div class="container">
-      <div class="section-head">
-        <h2>O que eu faço</h2>
-        <p>Soluções sob medida para pessoas, estudantes e pequenos negócios.</p>
-      </div>
-
-      <div class="cards">
-        <article class="card">
-          <div class="icon">🌐</div>
-          <h3>Sites</h3>
-          <p>Sites responsivos com apresentação da empresa, serviços, localização e botão para WhatsApp.</p>
-          <div class="price">A partir de R$250</div>
-          <span class="small">Valor varia conforme o projeto.</span>
-        </article>
-
-        <article class="card">
-          <div class="icon">💻</div>
-          <h3>Sistemas</h3>
-          <p>Sistemas simples para cadastro, clientes, produtos, estoque e outras necessidades.</p>
-          <div class="price">A partir de R$300</div>
-          <span class="small">Java, banco de dados e soluções personalizadas.</span>
-        </article>
-
-        <article class="card">
-          <div class="icon">📊</div>
-          <h3>Documentos</h3>
-          <p>Apresentações, currículos, documentos, planilhas e organização visual de materiais.</p>
-          <div class="price">A partir de R$30</div>
-          <span class="small">Orçamento conforme quantidade e complexidade.</span>
-        </article>
-      </div>
+      <span>
+        © 2026 Thiago Fachini — Todos os direitos reservados.
+      </span>
     </div>
-  </section>
-
-  <section id="portfolio">
-    <div class="container">
-      <div class="section-head">
-        <h2>Projetos de exemplo</h2>
-        <p>Use estes exemplos como demonstração até conseguir seus primeiros clientes.</p>
-      </div>
-
-      <div class="portfolio">
-        <article class="project">
-          <span>Website</span>
-          <h3>Barbearia Prime</h3>
-          <p>Landing page com serviços, horários, localização e agendamento pelo WhatsApp.</p>
-        </article>
-        <article class="project">
-          <span>Sistema</span>
-          <h3>Controle de Estoque</h3>
-          <p>Cadastro de produtos, quantidade, pesquisa, edição e exclusão.</p>
-        </article>
-        <article class="project">
-          <span>Website</span>
-          <h3>Tech Store</h3>
-          <p>Apresentação de loja de informática com produtos e contato comercial.</p>
-        </article>
-        <article class="project">
-          <span>Apresentação</span>
-          <h3>Apresentação Profissional</h3>
-          <p>Slides organizados para trabalhos acadêmicos, projetos e apresentações empresariais.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section id="contato">
-    <div class="container">
-      <div class="cta">
-        <h2>Tem um projeto em mente?</h2>
-        <p>Me conte o que você precisa e eu preparo um orçamento.</p>
-        <!-- TROQUE O NÚMERO ABAIXO PELO SEU WHATSAPP -->
-        <a class="btn" href="https://wa.me/5511999999999" target="_blank">Solicitar orçamento</a>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer>
-  <div class="container">
-    <span>© 2026 TechFachini — Soluções Digitais</span>
-    <span>Atendimento online</span>
-  </div>
-</footer>
+  </footer>
 
 </body>
 </html>
