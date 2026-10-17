@@ -2,11 +2,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <link rel="icon" type="image/jpeg" href="logo.jpg?v=3">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Portfólio de Thiago Fachini. Desenvolvimento de sites, sistemas Java e soluções digitais.">
   <title>TechFachini</title>
+
+  <!-- ÍCONE DA GUIA -->
+  <link rel="icon" type="image/jpeg" href="logo.jpg?v=3">
 
   <style>
     :root {
@@ -69,12 +71,28 @@
       gap: 15px;
     }
 
+    /* LOGO TECHFACHINI */
     .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
       font-size: 22px;
       font-weight: 800;
+      white-space: nowrap;
     }
 
-    .logo span {
+    .logo img {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    .logo-text {
+      color: white;
+    }
+
+    .logo-text strong {
       color: var(--secondary);
     }
 
@@ -90,7 +108,7 @@
       color: var(--secondary);
     }
 
-    /* BOTOES */
+    /* BOTÕES */
     .btn {
       display: inline-flex;
       justify-content: center;
@@ -118,7 +136,7 @@
       padding: 85px 0;
     }
 
-    /* APRESENTACAO */
+    /* APRESENTAÇÃO */
     .hero {
       min-height: 85vh;
       display: flex;
@@ -228,7 +246,7 @@
       margin-top: 5px;
     }
 
-    /* TITULOS */
+    /* TÍTULOS */
     .section-head {
       text-align: center;
       margin-bottom: 45px;
@@ -244,7 +262,7 @@
       margin-top: 10px;
     }
 
-    /* SERVICOS */
+    /* SERVIÇOS */
     .cards {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -362,7 +380,7 @@
       margin-bottom: 25px;
     }
 
-    /* RODAPE */
+    /* RODAPÉ */
     footer {
       padding: 30px 0;
       border-top: 1px solid var(--line);
@@ -376,8 +394,8 @@
       gap: 20px;
     }
 
-    /* CELULAR */
-    @media(max-width: 800px) {
+    /* RESPONSIVIDADE */
+    @media (max-width: 800px) {
       nav ul {
         display: none;
       }
@@ -404,6 +422,23 @@
         flex-direction: column;
       }
     }
+
+    @media (max-width: 420px) {
+      .logo {
+        font-size: 18px;
+        gap: 8px;
+      }
+
+      .logo img {
+        width: 36px;
+        height: 36px;
+      }
+
+      nav > .btn {
+        padding: 10px 12px;
+        font-size: 12px;
+      }
+    }
   </style>
 </head>
 
@@ -413,7 +448,12 @@
   <header>
     <div class="container">
       <nav>
-        <a href="#" class="logo">Tech<span>Fachini</span></a>
+
+        <!-- LOGO + NOME -->
+        <a href="#inicio" class="logo">
+          <img src="logo.jpg" alt="Logo TechFachini">
+          <span class="logo-text">Tech<strong>Fachini</strong></span>
+        </a>
 
         <ul>
           <li><a href="#inicio">Início</a></li>
@@ -435,7 +475,7 @@
 
   <main>
 
-    <!-- INICIO -->
+    <!-- INÍCIO -->
     <section class="hero" id="inicio">
       <div class="container hero-grid">
 
@@ -501,7 +541,7 @@
       </div>
     </section>
 
-    <!-- SERVICOS -->
+    <!-- SERVIÇOS -->
     <section id="servicos">
       <div class="container">
 
@@ -566,7 +606,7 @@
       </div>
     </section>
 
-    <!-- PORTFOLIO -->
+    <!-- PORTFÓLIO -->
     <section id="portfolio">
       <div class="container">
 
@@ -647,7 +687,6 @@
             Entre em contato para solicitar um orçamento.
           </p>
 
-          <!-- SUBSTITUA PELO SEU WHATSAPP -->
           <a href="https://wa.me/5535984012997"
              target="_blank" rel="noopener noreferrer"
              class="btn">
@@ -660,7 +699,7 @@
 
   </main>
 
-  <!-- RODAPE -->
+  <!-- RODAPÉ -->
   <footer>
     <div class="container">
       <span>
